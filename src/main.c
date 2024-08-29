@@ -13,7 +13,7 @@ int main(){
     printf("Enter the third number: ");
     scanf("%d", &c);
 
-    if(a > 0  b > 0  c > 0) {
+    if(a > 0 || b > 0 || c > 0) {
         printf("There is a positive number.\n");
     } else {
         printf("No number is positive");
