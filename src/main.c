@@ -1,18 +1,15 @@
 #include <stdio.h>
 
-int main() {
-    int num;
+int add(int a, int b) {
+    return a + b;
+}
 
-    printf("Enter a number: ");
-    scanf("%d", &num);
+int main(){
+   int num1 = 10, num2 = 5;
+ 
+   int addition = add(num1, num2);
 
-    if (num % 2 == 0) {
-        printf("The number is even.\n");
-    } else 
-    
-    if(!(num % 2 == 0)) {
-        printf("The number is odd.\n");
-    }
+   printf("Result: %d\n", addition);
 
-    return 0;
+   return 0;
 }
