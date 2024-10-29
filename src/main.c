@@ -3,6 +3,7 @@
 int main(){
     int numbers1[5];
     int numbers2[5];
+    int dif;
 
     for(int i = 0; i < 5; i++) {
        numbers1[i] = i + 1;
@@ -26,6 +27,11 @@ int main(){
     }
 
     printf("\n");
-
+    
+    for(int i = 0; i < 5; i++){
+        int dif = numbers2[i] - numbers1[i];
+    printf("Різниця елементів %d та %d: %d\n", numbers2[i], numbers1[i], dif);
+    }
+    
     return 0;
 }
