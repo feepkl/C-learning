@@ -1,37 +1,49 @@
 #include <stdio.h>
 
-int main(){
-    int numbers1[5];
-    int numbers2[5];
-    int dif;
-
-    for(int i = 0; i < 5; i++) {
-       numbers1[i] = i + 1;
-    } 
-    for(int i = 0; i < 5; i++) {
-       numbers2[i] = i + 10;
+float calculateAverage(int temps[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += temps[i];
     }
+    return (float)sum / size;
+}
 
-    printf("Числа у першому масиві: \n");
-
-    for(int i = 0; i < 5; i++) {
-        printf ("%d\n", numbers1[i]);
+void findMinMax(int temps[], int size, int *min, int *max) {
+    *min = temps[0];
+    *max = temps[0];
+    for(int i = 1; i < size; i++) {
+        if(temps[i] < *min) {
+            *min = temps[i];
+        }
+        if(temps[i] > *max) {
+            *max = temps[i];
+        }
     }
+}
 
-    printf("\n");
-
-    printf("Числа у другому масиві: \n");
-
-    for (int i = 0; i < 5; i++){
-        printf ("%d\n", numbers2[i]);
+int countBelowAverage(int temps[], int size, float average) {
+    int count = 0;
+    for(int i = 0; i < size; i++) {
+        if(temps[i] < average) {
+            count++;
+        }
     }
+    return count;
+}
 
-    printf("\n");
-    
-    for(int i = 0; i < 5; i++){
-        int dif = numbers2[i] - numbers1[i];
-    printf("Різниця елементів %d та %d: %d\n", numbers2[i], numbers1[i], dif);
-    }
-    
+int main() {
+    int temps[7] = {12, 9, 10, 0, 2, 6, 4};
+    int size = sizeof(temps) / sizeof(temps[0]);
+
+    float average = calculateAverage(temps, size);
+    int min, max;
+    findMinMax(temps, size, &min, &max);
+    int belowAverageDays = countBelowAverage(temps, size, average);
+
+    printf("Середня температура за тиждень: %.2f\n", average);
+    printf("Найнижча температура: %d\n", min);
+    printf("Найвища температура: %d\n", max);
+    printf("Кількість днів з температурою нижче середньої: %d\n", belowAverageDays);
+
     return 0;
 }
